@@ -62,7 +62,7 @@ The original experiment used two real Token Factory requests and a temporary loc
 
 ## Official submission status
 
-The [public judge demo](https://chuangmenghuan-wq.github.io/edgesre-guardian/) is a **REPLAY** of the recorded R13 incident. It does not make live model requests. This public repository is an open source test build; Devpost submission remains pending the owner's personal review and final acceptance of the official terms. The Best Apps and Agents positioning follows the [official challenge overview](https://nebiusglobalaihackathon.devpost.com/) and [rules](https://nebiusglobalaihackathon.devpost.com/rules). Keep the site available through the end of the official judging period, December 15, 2026.
+The [public judge demo](https://chuangmenghuan-wq.github.io/edgesre-guardian/) and [166-second narrated video](https://www.youtube.com/watch?v=0MECamqwmpY) are **REPLAY** presentations of the recorded R13 incident. Viewing them does not make live model requests. This public repository is an open source test build; Devpost submission remains pending the owner's personal review and final acceptance of the official terms. The Best Apps and Agents positioning follows the [official challenge overview](https://nebiusglobalaihackathon.devpost.com/) and [rules](https://nebiusglobalaihackathon.devpost.com/rules). Keep the site available through the end of the official judging period, December 15, 2026.
 
 ## License
 
