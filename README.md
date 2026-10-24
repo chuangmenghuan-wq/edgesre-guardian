@@ -62,8 +62,8 @@ The original experiment used two real Token Factory requests and a temporary loc
 
 ## Official submission status
 
-This directory is a **reviewable publication candidate**, not by itself a published repository or Devpost submission. The static `docs/` site is prepared for free GitHub Pages hosting. The actual public demo and YouTube URLs must be checked after publication. The Best Apps and Agents positioning follows the [official challenge overview](https://nebiusglobalaihackathon.devpost.com/) and [rules](https://nebiusglobalaihackathon.devpost.com/rules). Keep the site available through the end of the official judging period, December 15, 2026.
+The [public judge demo](https://chuangmenghuan-wq.github.io/edgesre-guardian/) is a **REPLAY** of the recorded R13 incident. It does not make live model requests. This public repository is an open source test build; Devpost submission remains pending the owner's personal review and final acceptance of the official terms. The Best Apps and Agents positioning follows the [official challenge overview](https://nebiusglobalaihackathon.devpost.com/) and [rules](https://nebiusglobalaihackathon.devpost.com/rules). Keep the site available through the end of the official judging period, December 15, 2026.
 
 ## License
 
-MIT, see [LICENSE](LICENSE). The owner must confirm that all included inherited R9–R13 code and assets are theirs to release under this license before public publication.
+MIT, see [LICENSE](LICENSE). The owner confirmed the right to publish the included R9–R13 code and original visuals under MIT before this public release.
