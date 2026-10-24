@@ -1,0 +1,383 @@
+{
+  "events": [
+    {
+      "data": {
+        "fault": "compound_capacity_timeout",
+        "original_config_sha256": "d50e868c65566689a36430fa8fe1c6267556aaa0e486afabceaa51af00390dd2"
+      },
+      "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "seq": 1,
+      "sha256": "0178c03766588e5d50e84e598637284c3a3139c2a31e16b5c2930db1dce1ada6",
+      "stage": "INJECT_ISOLATED_FAULT"
+    },
+    {
+      "data": {
+        "attempt": 1,
+        "observation": {
+          "available_actions": {
+            "abstain": [],
+            "set_request_timeout_ms": [
+              100,
+              200,
+              350
+            ],
+            "set_worker_limit": [
+              4,
+              8,
+              16
+            ]
+          },
+          "checkout_http": 503,
+          "configuration": {
+            "request_timeout_ms": 40,
+            "worker_limit": 2
+          },
+          "health_http": 200,
+          "logs": [
+            "workers saturated",
+            "checkout capacity exhausted",
+            "upstream deadline exceeded",
+            "checkout timed out"
+          ],
+          "metrics": {
+            "checkout_error_rate": 0.8,
+            "queue_depth": 23,
+            "request_timeout_count": 19
+          }
+        }
+      },
+      "previous_sha256": "0178c03766588e5d50e84e598637284c3a3139c2a31e16b5c2930db1dce1ada6",
+      "seq": 2,
+      "sha256": "adb4842b3d23c5f645f0f8df89aaa0ce6a90be1901047f452300f18568764202",
+      "stage": "OBSERVE_HTTP_LOGS_METRICS"
+    },
+    {
+      "data": {
+        "attempt": 1,
+        "decision": {
+          "action": "set_worker_limit",
+          "args": {
+            "value": 8
+          },
+          "diagnosis": "worker_limit_too_low",
+          "reason": "The current worker_limit of 2 is insufficient, leading to queue depth 23, high checkout error rate (0.8), and frequent timeouts; increasing to 8 will expand capacity and reduce the checkout timeout rate."
+        },
+        "observation_sha256": "a1326295aa7f8f3bb65e91388811225b3686990a057a86c8f0912f85f138ab48",
+        "provider": {
+          "id": "chatcmpl-1e2c2f0e-fb43-466c-8021-7fceeacdf8a1",
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "provider": "nebius_token_factory",
+          "real_nebius_inference": true,
+          "usage": {
+            "completion_tokens": 676,
+            "prompt_tokens": 276,
+            "total_tokens": 952
+          }
+        }
+      },
+      "previous_sha256": "adb4842b3d23c5f645f0f8df89aaa0ce6a90be1901047f452300f18568764202",
+      "seq": 3,
+      "sha256": "98a204bf40629816093881924e06697c286c5c0fc55e2265a9e1b6ee7f496db7",
+      "stage": "MODEL_DIAGNOSIS_PLAN"
+    },
+    {
+      "data": {
+        "action": "set_worker_limit",
+        "args": {
+          "value": 8
+        },
+        "attempt": 1,
+        "status": "ALLOW"
+      },
+      "previous_sha256": "98a204bf40629816093881924e06697c286c5c0fc55e2265a9e1b6ee7f496db7",
+      "seq": 4,
+      "sha256": "fb61724b7fa7c7f9028ad13c36336a0860e00724e56be2f616c0f4f51988f422",
+      "stage": "SAFETY_GATE"
+    },
+    {
+      "data": {
+        "action": "set_worker_limit",
+        "args": {
+          "value": 8
+        },
+        "attempt": 1,
+        "config_sha256": "112a5c576a0a114f27c94bbfa12f54b01565d6f4b1c2d63e73bca820c6509f20"
+      },
+      "previous_sha256": "fb61724b7fa7c7f9028ad13c36336a0860e00724e56be2f616c0f4f51988f422",
+      "seq": 5,
+      "sha256": "7bdd295d74b2453dae1c5faf5b56135a55a338a1b7af6ff8c2b53ddb431ffe0c",
+      "stage": "EXECUTE_ALLOWLISTED_LOCAL_WRITE"
+    },
+    {
+      "data": {
+        "attempt": 1,
+        "checkout_http": 503,
+        "health_http": 200
+      },
+      "previous_sha256": "7bdd295d74b2453dae1c5faf5b56135a55a338a1b7af6ff8c2b53ddb431ffe0c",
+      "seq": 6,
+      "sha256": "6141307e9671f1a5325fe48f757ae692e0c5a896bd3708bf8d4fca273d3878ef",
+      "stage": "VERIFY_INDEPENDENT_HTTP"
+    },
+    {
+      "data": {
+        "action": "set_worker_limit",
+        "args": {
+          "value": 8
+        },
+        "attempt": 1,
+        "configuration": {
+          "request_timeout_ms": 40,
+          "worker_limit": 8
+        },
+        "diagnosis": "worker_limit_too_low",
+        "http": {
+          "checkout": 503,
+          "health": 200
+        },
+        "logs": [
+          "upstream deadline exceeded",
+          "checkout timed out"
+        ],
+        "metrics": {
+          "checkout_error_rate": 0.8,
+          "queue_depth": 0,
+          "request_timeout_count": 19
+        },
+        "reason": "The current worker_limit of 2 is insufficient, leading to queue depth 23, high checkout error rate (0.8), and frequent timeouts; increasing to 8 will expand capacity and reduce the checkout timeout rate."
+      },
+      "previous_sha256": "6141307e9671f1a5325fe48f757ae692e0c5a896bd3708bf8d4fca273d3878ef",
+      "seq": 7,
+      "sha256": "3dcac9519c498c7e6abfca6399ee5d42c0f57e2d6c98904e1a39c7c0623286ca",
+      "stage": "VERIFY_FAIL"
+    },
+    {
+      "data": {
+        "attempt": 2,
+        "observation": {
+          "available_actions": {
+            "abstain": [],
+            "set_request_timeout_ms": [
+              100,
+              200,
+              350
+            ],
+            "set_worker_limit": [
+              4,
+              8,
+              16
+            ]
+          },
+          "checkout_http": 503,
+          "configuration": {
+            "request_timeout_ms": 40,
+            "worker_limit": 8
+          },
+          "health_http": 200,
+          "logs": [
+            "upstream deadline exceeded",
+            "checkout timed out"
+          ],
+          "metrics": {
+            "checkout_error_rate": 0.8,
+            "queue_depth": 0,
+            "request_timeout_count": 19
+          },
+          "repair_feedback": {
+            "instruction": "Reassess the prior hypothesis using the failed HTTP verification and propose a new listed action or abstain.",
+            "previous_attempts": [
+              {
+                "action": "set_worker_limit",
+                "args": {
+                  "value": 8
+                },
+                "attempt": 1,
+                "configuration": {
+                  "request_timeout_ms": 40,
+                  "worker_limit": 8
+                },
+                "diagnosis": "worker_limit_too_low",
+                "http": {
+                  "checkout": 503,
+                  "health": 200
+                },
+                "logs": [
+                  "upstream deadline exceeded",
+                  "checkout timed out"
+                ],
+                "metrics": {
+                  "checkout_error_rate": 0.8,
+                  "queue_depth": 0,
+                  "request_timeout_count": 19
+                },
+                "reason": "The current worker_limit of 2 is insufficient, leading to queue depth 23, high checkout error rate (0.8), and frequent timeouts; increasing to 8 will expand capacity and reduce the checkout timeout rate."
+              }
+            ]
+          }
+        }
+      },
+      "previous_sha256": "3dcac9519c498c7e6abfca6399ee5d42c0f57e2d6c98904e1a39c7c0623286ca",
+      "seq": 8,
+      "sha256": "be48a96523d107ce3aa843a241365ff8921a81334cb60d961a1927e877741057",
+      "stage": "OBSERVE_HTTP_LOGS_METRICS"
+    },
+    {
+      "data": {
+        "attempt": 2,
+        "decision": {
+          "action": "set_request_timeout_ms",
+          "args": {
+            "value": 350
+          },
+          "diagnosis": "request_timeout_too_low",
+          "reason": "The prior fix of raising worker_limit to 8 did not eliminate the 503 checkout failures or the timeout logs; metrics show a high checkout_error_rate and many request_timeout_count, indicating the 40ms timeout is too short. Increasing the timeout to 350ms, which is an available option, should prevent premature timeouts and reduce checkout errors."
+        },
+        "observation_sha256": "18580f1b0562bbb7df9e1693562311807fd956e85b7be30c6f1f2680a78072d1",
+        "provider": {
+          "id": "chatcmpl-5250427f-f80e-40dc-a99d-c72f519c5581",
+          "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+          "provider": "nebius_token_factory",
+          "real_nebius_inference": true,
+          "usage": {
+            "completion_tokens": 613,
+            "prompt_tokens": 473,
+            "total_tokens": 1086
+          }
+        }
+      },
+      "previous_sha256": "be48a96523d107ce3aa843a241365ff8921a81334cb60d961a1927e877741057",
+      "seq": 9,
+      "sha256": "8da7aa8f58fb3ef5ce326351c65c4730239c6784abde4a11516d994b432bca38",
+      "stage": "MODEL_DIAGNOSIS_PLAN"
+    },
+    {
+      "data": {
+        "action": "set_request_timeout_ms",
+        "args": {
+          "value": 350
+        },
+        "attempt": 2,
+        "status": "ALLOW"
+      },
+      "previous_sha256": "8da7aa8f58fb3ef5ce326351c65c4730239c6784abde4a11516d994b432bca38",
+      "seq": 10,
+      "sha256": "703adce52d601fc290b90d42697cffb72a99b32ef4c110a8c83b2ad1e47e4f54",
+      "stage": "SAFETY_GATE"
+    },
+    {
+      "data": {
+        "action": "set_request_timeout_ms",
+        "args": {
+          "value": 350
+        },
+        "attempt": 2,
+        "config_sha256": "4e4637607a7c279ddb737ac65168ddba6428e2aaf1655dbcc65abdd581966f5d"
+      },
+      "previous_sha256": "703adce52d601fc290b90d42697cffb72a99b32ef4c110a8c83b2ad1e47e4f54",
+      "seq": 11,
+      "sha256": "8302024c2da71dfee056412bde1ee5516ab7c8e86006062a782c8912fc702adf",
+      "stage": "EXECUTE_ALLOWLISTED_LOCAL_WRITE"
+    },
+    {
+      "data": {
+        "attempt": 2,
+        "checkout_http": 200,
+        "health_http": 200
+      },
+      "previous_sha256": "8302024c2da71dfee056412bde1ee5516ab7c8e86006062a782c8912fc702adf",
+      "seq": 12,
+      "sha256": "3b96505e20ac55dee6bca49bb1d37afd65e0826058119de8c30a940fefd85dc3",
+      "stage": "VERIFY_INDEPENDENT_HTTP"
+    },
+    {
+      "data": {
+        "attempts": 2,
+        "checkout_http": 200,
+        "health_http": 200,
+        "outcome": "VERIFIED_RECOVERY"
+      },
+      "previous_sha256": "3b96505e20ac55dee6bca49bb1d37afd65e0826058119de8c30a940fefd85dc3",
+      "seq": 13,
+      "sha256": "aeea69c9ec3454148cf34d3416fa88b6061d2f07259157b6ac7347bb3517ea96",
+      "stage": "FINAL"
+    }
+  ],
+  "limitation": "One observed real multi-step success in an isolated local HTTP lab; not production reliability.",
+  "live_calls_from_demo": 0,
+  "mode": "REPLAY",
+  "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+  "origin": "R13 real Nebius Token Factory responses and isolated loopback HTTP checks",
+  "provider_requests": [
+    {
+      "decision_source": "message.content",
+      "finish_reason": "stop",
+      "http_request_id": "082694adfe276f716e7ceceb5b96190c",
+      "http_status": 200,
+      "parsed_decision": {
+        "action": "set_worker_limit",
+        "args": {
+          "value": 8
+        },
+        "diagnosis": "worker_limit_too_low",
+        "reason": "The current worker_limit of 2 is insufficient, leading to queue depth 23, high checkout error rate (0.8), and frequent timeouts; increasing to 8 will expand capacity and reduce the checkout timeout rate."
+      },
+      "provider_id": "chatcmpl-1e2c2f0e-fb43-466c-8021-7fceeacdf8a1",
+      "response_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "response_sha256": "5d3a3732549bc0e60b007f041576148519cd42829b5c8c72471fa3dbd7d15a12",
+      "slot": 1,
+      "usage": {
+        "completion_tokens": 676,
+        "prompt_tokens": 276,
+        "total_tokens": 952
+      }
+    },
+    {
+      "decision_source": "message.content",
+      "finish_reason": "stop",
+      "http_request_id": "57b087ab28777d49a1b696c6fed0d047",
+      "http_status": 200,
+      "parsed_decision": {
+        "action": "set_request_timeout_ms",
+        "args": {
+          "value": 350
+        },
+        "diagnosis": "request_timeout_too_low",
+        "reason": "The prior fix of raising worker_limit to 8 did not eliminate the 503 checkout failures or the timeout logs; metrics show a high checkout_error_rate and many request_timeout_count, indicating the 40ms timeout is too short. Increasing the timeout to 350ms, which is an available option, should prevent premature timeouts and reduce checkout errors."
+      },
+      "provider_id": "chatcmpl-5250427f-f80e-40dc-a99d-c72f519c5581",
+      "response_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+      "response_sha256": "a19e54b7d907cc2b2b5e99ae8b53199a9c9dcb754a10f1a2d914c3310101fe6f",
+      "slot": 2,
+      "usage": {
+        "completion_tokens": 613,
+        "prompt_tokens": 473,
+        "total_tokens": 1086
+      }
+    }
+  ],
+  "result": {
+    "estimated_model_cost_usd": 0.0003543,
+    "outcome": "VERIFIED_RECOVERY",
+    "provider_request_count": 2,
+    "rollback": "NOT_TRIGGERED_VERIFIED_RECOVERY"
+  },
+  "scope": "real Nebius Nemotron decisions; isolated local loopback HTTP service",
+  "source_sha256": {
+    "R13_FINAL_REPORT.md": {
+      "sha256": "39685d3d6aecc0a8813c314e3ad6c1668385db5fb7d0b6d5cd9bfb2635d2779e",
+      "size_bytes": 5068
+    },
+    "R13_PROVIDER_RESPONSES.json": {
+      "sha256": "491eacd10d5ede18f0f089e09c4326d2372348d725de7f406ad2d6c96631aa5d",
+      "size_bytes": 9730
+    },
+    "R13_REAL_RESULT.json": {
+      "sha256": "71f892d3a9acae6e01b0b188360bc3602f18cbab94c6a11f24c206c7a88b1d7d",
+      "size_bytes": 13934
+    },
+    "R13_REAL_VERIFICATION.json": {
+      "sha256": "d1330d15713a1ed3872b4a08ccff46f24841df0eb4b6a9ae6267b76d62c41421",
+      "size_bytes": 4474
+    }
+  }
+}
