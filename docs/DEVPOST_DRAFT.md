@@ -36,9 +36,9 @@ The early isolated incident lab and deterministic policy established reversible 
 
 Nebius Token Factory's OpenAI-compatible chat completions API made it possible to connect the existing bounded loop without provisioning a dedicated endpoint. Its response IDs, model identity, HTTP status, and token counts supported request-level evidence and cost estimates. NVIDIA Nemotron made the second, different proposal after receiving the failed HTTP check and updated telemetry; the useful behavior was the change of hypothesis after verification. The trial Stop usage after trial control helped bound risk. The Usage screen posted rounded values after a delay, so a more immediate per-request trial debit receipt would make cost-sensitive testing easier.
 
-## Submission fields still required
+## Publication status
 
-- Public repository URL: pending owner approval, publication, and external readback.
-- Working demo/test build URL: pending owner approval, GitHub Pages activation, and external readback. The local test build runs with `python serve.py`.
-- Public YouTube video URL (<3 minutes): the actual 166-second browser-recorded MP4 is complete and technically validated; upload and external readback are pending owner approval.
-- Official Devpost submission: draft only, not submitted.
+- Public repository: https://github.com/chuangmenghuan-wq/edgesre-guardian
+- Working replay demo: https://chuangmenghuan-wq.github.io/edgesre-guardian/
+- Public 166-second narrated browser video: https://www.youtube.com/watch?v=0MECamqwmpY
+- Devpost project details and additional information are saved in the existing draft. The formal Rules/Terms checkbox and final Submit remain for the owner; the hackathon entry is not submitted.
