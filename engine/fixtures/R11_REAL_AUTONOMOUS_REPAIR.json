@@ -1,0 +1,15 @@
+{
+  "provider_audit": {
+    "content": "\n{\n  \"diagnosis\": \"worker_limit_too_low\",\n  \"action\": \"set_worker_limit\",\n  \"args\": {\n    \"value\": 4\n  },\n  \"reason\": \"The current worker_limit of 2 is insufficient, leading to saturated workers and capacity exhaustion; increasing it to 4 should resolve the checkout 503 errors.\"\n}",
+    "finish_reason": "stop",
+    "response_id": "chatcmpl-d26053b1-07f3-47dd-a691-66d40a75e203",
+    "response_model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "usage": {
+      "completion_tokens": 429,
+      "completion_tokens_details": null,
+      "prompt_tokens": 232,
+      "prompt_tokens_details": null,
+      "total_tokens": 661
+    }
+  }
+}
