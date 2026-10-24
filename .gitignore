@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.env*
+private/
+*.key
+*.pem
+*.pfx
+*_ATTEMPT_STARTED.json
+*_MODEL_RECEIPT.json
+*_MODEL_FAILURE.json
+LIVE_CALL_ATTEMPT_STARTED.json
+LIVE_MODEL_RECEIPT.json
+LIVE_MODEL_FAILURE.json
+R9_LIVE_ATTEMPT_STARTED.json
+R9_LIVE_MODEL_RECEIPT.json
+R9_LIVE_MODEL_FAILURE.json
