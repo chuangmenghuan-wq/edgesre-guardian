@@ -1,0 +1,54 @@
+{
+  "schema": "edgesre_r40_static_offline_index_1",
+  "mode": "OFFLINE_SIMULATION_RECORDED",
+  "model": "NOT_RUN",
+  "provider_calls_in_this_build": 0,
+  "contract": {
+    "schema": "edgesre_r38_contract_preview_1",
+    "model": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
+    "mode": "NO_PROVIDER_CALL",
+    "r34_contract_sha256": "b61e139c26d651801da7365a754d127abf8b0b61129e4a036d9ef916c2258532",
+    "request_body_sha256": "c421dd6d26af5b1833d932dec9ecf883e3961a67fb32e7d7a97359b57db3a7bc",
+    "request_body_bytes": 2292,
+    "max_completion_tokens": 3072,
+    "response_format": "json_schema",
+    "available_prediction_metrics": [
+      "checkout_error_rate",
+      "checkout_http",
+      "db_pool_waiters",
+      "oldest_queue_item_ms",
+      "queue_depth",
+      "request_timeout_count",
+      "retry_attempts_per_request",
+      "upstream_p95_ms"
+    ],
+    "available_action_names": [
+      "abstain",
+      "set_db_pool_size"
+    ],
+    "live_calls_exposed_by_this_build": 0
+  },
+  "cases": {
+    "D01_PUBLIC_DEVELOPMENT": {
+      "path": "evidence/offline_D01_PUBLIC_DEVELOPMENT.json",
+      "sha256": "890419789f60a8349d054bbe98956c2e0459bcc0d4650fdfe3eac5b574b196d8",
+      "before_http": 503,
+      "after_http": 200,
+      "outcome": "VERIFIED_RECOVERY"
+    },
+    "D02_PUBLIC_UNREPAIRABLE": {
+      "path": "evidence/offline_D02_PUBLIC_UNREPAIRABLE.json",
+      "sha256": "1a854655ec1fa97116f6465ec0f47cb0e00bcb6faa017ef59506e35c95cc540b",
+      "before_http": 503,
+      "after_http": 503,
+      "outcome": "ABSTAIN_NO_REPAIR"
+    },
+    "D03_PUBLIC_COMPOUND": {
+      "path": "evidence/offline_D03_PUBLIC_COMPOUND.json",
+      "sha256": "151de3e160eaeb10bb8fdec82db0958d87cb4f726cbaa0e6215e8538ad0f397a",
+      "before_http": 503,
+      "after_http": 200,
+      "outcome": "VERIFIED_RECOVERY"
+    }
+  }
+}

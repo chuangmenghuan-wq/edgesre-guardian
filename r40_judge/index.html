@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>EdgeSRE Guardian | Real Nemotron repair evidence</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-icon">E<span>·</span></span><span>EdgeSRE <b>Guardian</b><small>Evidence-backed incident response</small></span></a>
+    <span class="mode"><i></i> RECORDED REAL MODEL · REPLAY VIEW</span>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">NVIDIA NEMOTRON 3 NANO × NEBIUS TOKEN FACTORY</p>
+        <h1>Watch the agent<br><em>change its mind.</em></h1>
+        <p class="lead">A real Nemotron decision loop sees a failing checkout route, chooses a bounded repair, reads new HTTP evidence, and either replans or restores the original settings.</p>
+        <div class="hero-actions"><a class="button primary" href="#story">Explore a real recovery ↓</a><a class="button ghost" href="judge.html">Try three isolated scenarios ↗</a><a class="button ghost" href="#score">View the full scorecard</a></div>
+      </div>
+      <aside class="hero-proof"><span class="tiny">WHAT YOU ARE VIEWING</span><strong>Recorded provider responses</strong><p>This page replays saved Nemotron API decisions and isolated loopback HTTP checks. Playback sends <b>zero</b> model requests.</p><span class="pill">LIVE INFERENCE IS NOT RUNNING</span></aside>
+    </section>
+
+    <section class="metrics" aria-label="Experiment summary">
+      <div><span>REAL MODEL CALLS</span><strong id="call-count">—</strong><small>Nebius provider receipts</small></div>
+      <div><span>NEW SEALED CASES</span><strong id="case-count">—</strong><small>all five new rounds, failures included</small></div>
+      <div><span>R34 CONTRACT REPAIRS</span><strong id="recovery-count">—</strong><small>R34 + R36 + R37; HTTP 200 verified</small></div>
+      <div><span>HARD REFUSAL CHALLENGE</span><strong id="safety-count">—</strong><small>R38 correct abstain; all 8 rolled back</small></div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="section-heading"><div><p class="eyebrow">THE DECISION LOOP</p><h2>One incident, every decision</h2></div><p>Pick a recorded incident. Each round pairs the model's actual chosen action with an independent HTTP check.</p></div>
+      <div class="story-shell">
+        <div class="story-main">
+          <div class="story-controls"><label for="episode">Recorded incident</label><select id="episode"></select><span id="episode-origin" class="tag">—</span></div>
+          <div class="status-line"><div><span class="tiny">CHECKOUT SERVICE</span><strong id="current-http">—</strong></div><span id="round-count">—</span></div>
+          <div class="route"><span>OBSERVE</span><span>DIAGNOSE</span><span>PROPOSE</span><span>SAFETY GATE</span><span>VERIFY</span><span>REPLAN / STOP</span></div>
+          <article class="decision-card" aria-live="polite">
+            <div class="card-top"><span id="step-label" class="step-label">—</span><span id="model-id" class="model-id">—</span></div>
+            <h3 id="step-title">Loading receipt…</h3>
+            <p id="step-summary"></p>
+            <div class="decision-grid">
+              <div><span>MODEL ACTION</span><strong id="step-action">—</strong></div>
+              <div><span>SAFETY GATE</span><strong id="step-gate">—</strong></div>
+              <div><span>HTTP AFTER ACTION</span><strong id="step-http">—</strong></div>
+            </div>
+            <div class="evidence"><div><span>MODEL'S HYPOTHESIS</span><p id="step-diagnosis">—</p></div><div><span>NEW EVIDENCE</span><p id="step-feedback">—</p></div></div>
+            <div class="receipt"><span>PROVIDER RECEIPT</span><code id="step-receipt">—</code></div>
+          </article>
+          <div class="transport"><button id="previous" type="button">← Previous</button><button id="play" type="button" class="button primary">▶ Play decision loop</button><button id="next" type="button">Next →</button><label for="speed">Speed</label><select id="speed"><option value="3200">1×</option><option value="1600">2×</option><option value="800">4×</option></select></div>
+        </div>
+        <aside class="timeline"><p class="eyebrow">PROOF, NOT ANIMATION</p><h3>Decision timeline</h3><ol id="timeline"></ol><div class="timeline-note">A metric improving is not a repair. Only independent HTTP 200 closes an incident.</div></aside>
+      </div>
+    </section>
+
+    <section id="score" class="score">
+      <div class="section-heading"><div><p class="eyebrow">NO CHERRY PICKING</p><h2>Every sealed case counts</h2></div><p>R35's 18 truncations and R38's four missed refusals are included. Different cohorts share a simulator, but are not paired cases.</p></div>
+      <div id="score-cards" class="score-cards"></div>
+      <div class="case-table-wrap"><table><thead><tr><th>ROUND</th><th>CASE</th><th>RESULT</th><th>HTTP</th><th>MODEL CALLS</th><th>SAFETY</th></tr></thead><tbody id="case-rows"></tbody></table></div>
+    </section>
+
+    <section class="trust">
+      <div><p class="eyebrow">TECHNICAL IMPLEMENTATION</p><h2>A bounded agent, not an open shell.</h2><p>The model sees only HTTP, logs, metrics, current configuration, allowlisted actions, and failure feedback. A strict JSON parser and Safety Gate reject malformed or unapproved decisions. The executor changes only temporary local configuration and verifies the route over HTTP.</p></div>
+      <div class="trust-list"><div><b>01</b><span>Model proposes the repair; code never supplies the hidden answer.</span></div><div><b>02</b><span>Failed actions become evidence for the next model decision.</span></div><div><b>03</b><span>Invalid output stops the case and restores its starting state.</span></div><div><b>04</b><span>Provider IDs, token usage, trace hashes, and all case outcomes are retained.</span></div></div>
+    </section>
+    <section class="limits"><p class="eyebrow">TEST BUILD</p><p>Try three saved offline development scenarios in the hosted preview, or run <code>python judge_server.py</code> locally for fresh loopback HTTP checks. Their actions come from a clearly labeled offline policy. The recorded Nemotron evidence above remains separate.</p><a href="judge.html">Open the judge scenarios ↗</a></section>
+    <section class="limits"><p class="eyebrow">CLAIM BOUNDARY</p><p id="limits-text">This is an isolated loopback HTTP evaluation. It is not production SRE reliability, target edge hardware verification, or a live inference UI.</p><a href="evidence/public_receipt.json" download>Download redacted evidence ↗</a></section>
+  </main>
+  <footer><span>EdgeSRE Guardian · NVIDIA × Nebius upgrade candidate</span><span>R15 published submission remains unchanged</span></footer>
+</body>
+</html>

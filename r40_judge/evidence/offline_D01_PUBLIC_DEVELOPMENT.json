@@ -1,0 +1,501 @@
+{
+  "schema": "edgesre_r39_public_dev_run_1",
+  "mode": "OFFLINE_SIMULATION_RECORDED",
+  "model": "NOT_RUN",
+  "case_id": "D01_PUBLIC_DEVELOPMENT",
+  "incident": {
+    "case_id": "D01_PUBLIC_DEVELOPMENT",
+    "outcome": "VERIFIED_RECOVERY",
+    "before": {
+      "health_http": 200,
+      "checkout_http": 503,
+      "metrics": {
+        "checkout_error_rate": 0.78,
+        "db_pool_waiters": 22,
+        "oldest_queue_item_ms": 20,
+        "queue_depth": 0,
+        "request_timeout_count": 0,
+        "retry_attempts_per_request": 1,
+        "upstream_p95_ms": 95
+      },
+      "logs": [
+        "database acquire wait exceeded"
+      ],
+      "configuration": {
+        "db_pool_size": 4,
+        "queue_consumers": 4,
+        "request_timeout_ms": 90,
+        "retry_limit": 3,
+        "upstream_timeout_ms": 150,
+        "worker_limit": 4
+      },
+      "available_actions": {
+        "set_worker_limit": [
+          6,
+          10
+        ],
+        "set_request_timeout_ms": [
+          160,
+          320
+        ],
+        "set_db_pool_size": [
+          8,
+          12
+        ],
+        "set_upstream_timeout_ms": [
+          260,
+          500
+        ],
+        "set_retry_limit": [
+          2,
+          1
+        ],
+        "set_queue_consumers": [
+          6,
+          10
+        ],
+        "abstain": []
+      }
+    },
+    "after": {
+      "health_http": 200,
+      "checkout_http": 200,
+      "configuration": {
+        "db_pool_size": 12,
+        "queue_consumers": 4,
+        "request_timeout_ms": 90,
+        "retry_limit": 3,
+        "upstream_timeout_ms": 150,
+        "worker_limit": 4
+      }
+    },
+    "config_restored": false,
+    "attempts": 2,
+    "events": [
+      {
+        "seq": 1,
+        "stage": "OBSERVE_HTTP_LOGS_METRICS",
+        "data": {
+          "attempt": 0,
+          "observation": {
+            "health_http": 200,
+            "checkout_http": 503,
+            "metrics": {
+              "checkout_error_rate": 0.78,
+              "db_pool_waiters": 22,
+              "oldest_queue_item_ms": 20,
+              "queue_depth": 0,
+              "request_timeout_count": 0,
+              "retry_attempts_per_request": 1,
+              "upstream_p95_ms": 95
+            },
+            "logs": [
+              "database acquire wait exceeded"
+            ],
+            "configuration": {
+              "db_pool_size": 4,
+              "queue_consumers": 4,
+              "request_timeout_ms": 90,
+              "retry_limit": 3,
+              "upstream_timeout_ms": 150,
+              "worker_limit": 4
+            },
+            "available_actions": {
+              "set_worker_limit": [
+                6,
+                10
+              ],
+              "set_request_timeout_ms": [
+                160,
+                320
+              ],
+              "set_db_pool_size": [
+                8,
+                12
+              ],
+              "set_upstream_timeout_ms": [
+                260,
+                500
+              ],
+              "set_retry_limit": [
+                2,
+                1
+              ],
+              "set_queue_consumers": [
+                6,
+                10
+              ],
+              "abstain": []
+            }
+          }
+        },
+        "previous_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "sha256": "9596196965071ca408985147ffb54b69d7da2d29d7986b9c4d8d5ea292b4b027"
+      },
+      {
+        "seq": 2,
+        "stage": "OBSERVE_HTTP_LOGS_METRICS",
+        "data": {
+          "attempt": 1,
+          "observation": {
+            "health_http": 200,
+            "checkout_http": 503,
+            "metrics": {
+              "checkout_error_rate": 0.78,
+              "db_pool_waiters": 22,
+              "oldest_queue_item_ms": 20,
+              "queue_depth": 0,
+              "request_timeout_count": 0,
+              "retry_attempts_per_request": 1,
+              "upstream_p95_ms": 95
+            },
+            "logs": [
+              "database acquire wait exceeded"
+            ],
+            "configuration": {
+              "db_pool_size": 4,
+              "queue_consumers": 4,
+              "request_timeout_ms": 90,
+              "retry_limit": 3,
+              "upstream_timeout_ms": 150,
+              "worker_limit": 4
+            },
+            "available_actions": {
+              "set_worker_limit": [
+                6,
+                10
+              ],
+              "set_request_timeout_ms": [
+                160,
+                320
+              ],
+              "set_db_pool_size": [
+                8,
+                12
+              ],
+              "set_upstream_timeout_ms": [
+                260,
+                500
+              ],
+              "set_retry_limit": [
+                2,
+                1
+              ],
+              "set_queue_consumers": [
+                6,
+                10
+              ],
+              "abstain": []
+            }
+          }
+        },
+        "previous_sha256": "9596196965071ca408985147ffb54b69d7da2d29d7986b9c4d8d5ea292b4b027",
+        "sha256": "118a85169675d075b1d77eb5464c125bbeba5f1c5636747216f4db6578107d94"
+      },
+      {
+        "seq": 3,
+        "stage": "DECISION",
+        "data": {
+          "attempt": 1,
+          "decision": {
+            "diagnosis": "Public development fixture: database acquire wait",
+            "action": "set_db_pool_size",
+            "args": {
+              "value": 8
+            },
+            "reason": "Fixture policy tries the next unused allowlisted pool size"
+          },
+          "provider": {
+            "provider": "offline_deterministic_development_policy",
+            "real_nebius_inference": false,
+            "model": "NOT_RUN"
+          }
+        },
+        "previous_sha256": "118a85169675d075b1d77eb5464c125bbeba5f1c5636747216f4db6578107d94",
+        "sha256": "10c4091fef9def7e908ed86e729b023448ad8e2e2a0d9cdd73294ea06dd600ea"
+      },
+      {
+        "seq": 4,
+        "stage": "SAFETY_GATE",
+        "data": {
+          "attempt": 1,
+          "status": "ALLOW",
+          "action": "set_db_pool_size",
+          "args": {
+            "value": 8
+          }
+        },
+        "previous_sha256": "10c4091fef9def7e908ed86e729b023448ad8e2e2a0d9cdd73294ea06dd600ea",
+        "sha256": "3c2845b4440a84ed01dfd2436691ca4f77d1cd03947adc942cb8c8eb954efafd"
+      },
+      {
+        "seq": 5,
+        "stage": "EXECUTE_LOCAL_CONFIG",
+        "data": {
+          "attempt": 1,
+          "action": "set_db_pool_size",
+          "args": {
+            "value": 8
+          }
+        },
+        "previous_sha256": "3c2845b4440a84ed01dfd2436691ca4f77d1cd03947adc942cb8c8eb954efafd",
+        "sha256": "afe38ffb2e8dab34738ff5d7801996cd7fdfe7897748b1929e55d9d5a9542502"
+      },
+      {
+        "seq": 6,
+        "stage": "VERIFY_INDEPENDENT_HTTP",
+        "data": {
+          "attempt": 1,
+          "health_http": 200,
+          "checkout_http": 503,
+          "metrics": {
+            "checkout_error_rate": 0.78,
+            "db_pool_waiters": 22,
+            "oldest_queue_item_ms": 20,
+            "queue_depth": 0,
+            "request_timeout_count": 0,
+            "retry_attempts_per_request": 1,
+            "upstream_p95_ms": 95
+          }
+        },
+        "previous_sha256": "afe38ffb2e8dab34738ff5d7801996cd7fdfe7897748b1929e55d9d5a9542502",
+        "sha256": "8d7bae7eed2cb9f6d7d5054dcd2205bcb73633888d674fe43a1b8df24cecf22f"
+      },
+      {
+        "seq": 7,
+        "stage": "STEP_ROLLBACK",
+        "data": {
+          "attempt": 1,
+          "reason": "NO_OBSERVED_PROGRESS",
+          "restored_previous": true
+        },
+        "previous_sha256": "8d7bae7eed2cb9f6d7d5054dcd2205bcb73633888d674fe43a1b8df24cecf22f",
+        "sha256": "f982a6d5f5658cd65970fcdd5aea9c8bb918b65f292c2da2b0f8503f4e4815a1"
+      },
+      {
+        "seq": 8,
+        "stage": "VERIFY_FAIL",
+        "data": {
+          "attempt": 1,
+          "action": "set_db_pool_size",
+          "args": {
+            "value": 8
+          },
+          "diagnosis": "Public development fixture: database acquire wait",
+          "http": {
+            "health": 200,
+            "checkout": 503
+          },
+          "configuration": {
+            "db_pool_size": 4,
+            "queue_consumers": 4,
+            "request_timeout_ms": 90,
+            "retry_limit": 3,
+            "upstream_timeout_ms": 150,
+            "worker_limit": 4
+          },
+          "metrics": {
+            "checkout_error_rate": 0.78,
+            "db_pool_waiters": 22,
+            "oldest_queue_item_ms": 20,
+            "queue_depth": 0,
+            "request_timeout_count": 0,
+            "retry_attempts_per_request": 1,
+            "upstream_p95_ms": 95
+          },
+          "logs": [
+            "database acquire wait exceeded"
+          ]
+        },
+        "previous_sha256": "f982a6d5f5658cd65970fcdd5aea9c8bb918b65f292c2da2b0f8503f4e4815a1",
+        "sha256": "0356a3931ec9ed4b9c5aea9f2fe90d2e262163dc9a13da0938b46dc8f7170580"
+      },
+      {
+        "seq": 9,
+        "stage": "OBSERVE_HTTP_LOGS_METRICS",
+        "data": {
+          "attempt": 2,
+          "observation": {
+            "health_http": 200,
+            "checkout_http": 503,
+            "metrics": {
+              "checkout_error_rate": 0.78,
+              "db_pool_waiters": 22,
+              "oldest_queue_item_ms": 20,
+              "queue_depth": 0,
+              "request_timeout_count": 0,
+              "retry_attempts_per_request": 1,
+              "upstream_p95_ms": 95
+            },
+            "logs": [
+              "database acquire wait exceeded"
+            ],
+            "configuration": {
+              "db_pool_size": 4,
+              "queue_consumers": 4,
+              "request_timeout_ms": 90,
+              "retry_limit": 3,
+              "upstream_timeout_ms": 150,
+              "worker_limit": 4
+            },
+            "available_actions": {
+              "set_worker_limit": [
+                6,
+                10
+              ],
+              "set_request_timeout_ms": [
+                160,
+                320
+              ],
+              "set_db_pool_size": [
+                8,
+                12
+              ],
+              "set_upstream_timeout_ms": [
+                260,
+                500
+              ],
+              "set_retry_limit": [
+                2,
+                1
+              ],
+              "set_queue_consumers": [
+                6,
+                10
+              ],
+              "abstain": []
+            },
+            "repair_feedback": {
+              "previous_attempts": [
+                {
+                  "attempt": 1,
+                  "action": "set_db_pool_size",
+                  "args": {
+                    "value": 8
+                  },
+                  "diagnosis": "Public development fixture: database acquire wait",
+                  "http": {
+                    "health": 200,
+                    "checkout": 503
+                  },
+                  "configuration": {
+                    "db_pool_size": 4,
+                    "queue_consumers": 4,
+                    "request_timeout_ms": 90,
+                    "retry_limit": 3,
+                    "upstream_timeout_ms": 150,
+                    "worker_limit": 4
+                  },
+                  "metrics": {
+                    "checkout_error_rate": 0.78,
+                    "db_pool_waiters": 22,
+                    "oldest_queue_item_ms": 20,
+                    "queue_depth": 0,
+                    "request_timeout_count": 0,
+                    "retry_attempts_per_request": 1,
+                    "upstream_p95_ms": 95
+                  },
+                  "logs": [
+                    "database acquire wait exceeded"
+                  ]
+                }
+              ],
+              "instruction": "Update the hypothesis from new evidence; avoid a failed action or abstain."
+            }
+          }
+        },
+        "previous_sha256": "0356a3931ec9ed4b9c5aea9f2fe90d2e262163dc9a13da0938b46dc8f7170580",
+        "sha256": "a373c6404c0d0d9081fc1dbf3d68480b64bdc5233c407876c0d3b413474feb2d"
+      },
+      {
+        "seq": 10,
+        "stage": "DECISION",
+        "data": {
+          "attempt": 2,
+          "decision": {
+            "diagnosis": "Public development fixture: database acquire wait",
+            "action": "set_db_pool_size",
+            "args": {
+              "value": 12
+            },
+            "reason": "Fixture policy tries the next unused allowlisted pool size"
+          },
+          "provider": {
+            "provider": "offline_deterministic_development_policy",
+            "real_nebius_inference": false,
+            "model": "NOT_RUN"
+          }
+        },
+        "previous_sha256": "a373c6404c0d0d9081fc1dbf3d68480b64bdc5233c407876c0d3b413474feb2d",
+        "sha256": "92da150e1f3cc9d203c2da4326cd234f3a36fe07358d28f150ab1af57123475f"
+      },
+      {
+        "seq": 11,
+        "stage": "SAFETY_GATE",
+        "data": {
+          "attempt": 2,
+          "status": "ALLOW",
+          "action": "set_db_pool_size",
+          "args": {
+            "value": 12
+          }
+        },
+        "previous_sha256": "92da150e1f3cc9d203c2da4326cd234f3a36fe07358d28f150ab1af57123475f",
+        "sha256": "420a8e30126ac9aaca794eff2681a304c0bcf25429ecf9136b6e0b79f809acbd"
+      },
+      {
+        "seq": 12,
+        "stage": "EXECUTE_LOCAL_CONFIG",
+        "data": {
+          "attempt": 2,
+          "action": "set_db_pool_size",
+          "args": {
+            "value": 12
+          }
+        },
+        "previous_sha256": "420a8e30126ac9aaca794eff2681a304c0bcf25429ecf9136b6e0b79f809acbd",
+        "sha256": "027600119e5315e4e3b5e4e1008846ee67934a95102531c1772e05ddc32c288b"
+      },
+      {
+        "seq": 13,
+        "stage": "VERIFY_INDEPENDENT_HTTP",
+        "data": {
+          "attempt": 2,
+          "health_http": 200,
+          "checkout_http": 200,
+          "metrics": {
+            "checkout_error_rate": 0.0,
+            "db_pool_waiters": 0,
+            "oldest_queue_item_ms": 20,
+            "queue_depth": 0,
+            "request_timeout_count": 0,
+            "retry_attempts_per_request": 1,
+            "upstream_p95_ms": 95
+          }
+        },
+        "previous_sha256": "027600119e5315e4e3b5e4e1008846ee67934a95102531c1772e05ddc32c288b",
+        "sha256": "fd23fc64f7d671bb3cd23e5d31e984380b361b08134f0f78988298664891026a"
+      },
+      {
+        "seq": 14,
+        "stage": "FINAL",
+        "data": {
+          "outcome": "VERIFIED_RECOVERY",
+          "health_http": 200,
+          "checkout_http": 200
+        },
+        "previous_sha256": "fd23fc64f7d671bb3cd23e5d31e984380b361b08134f0f78988298664891026a",
+        "sha256": "442a9b0a76b2d3259267005e7d1b338f9d66cb659fa89f387477385b26e4b74c"
+      }
+    ],
+    "head_sha256": "442a9b0a76b2d3259267005e7d1b338f9d66cb659fa89f387477385b26e4b74c",
+    "provider": {
+      "provider": "offline_deterministic_development_policy",
+      "real_nebius_inference": false,
+      "model": "NOT_RUN"
+    },
+    "scope": "loopback_http_tempfile_only"
+  },
+  "private_blind_score": "NOT_APPLICABLE",
+  "source_mode": "OFFLINE_POLICY_FRESH_LOCAL_HTTP"
+}
